@@ -49,6 +49,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    'detection.middleware.XFrameOptionsMiddleware',
 ]
 
 ROOT_URLCONF = "chest_cancer_detection.urls"
