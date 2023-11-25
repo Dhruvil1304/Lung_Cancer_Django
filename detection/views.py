@@ -143,7 +143,7 @@ def home_async(request):
                 cancer_pred = predict_cancer(image_file)
                 context['result'] = {
                     'is_ct_scan': preds[0],
-                    'ct_scan_pred': preds[1],
+                    'ct_scan_pred': cancer_pred[1],
                     'cancer_pred': cancer_pred[0],
                 }
             else:
