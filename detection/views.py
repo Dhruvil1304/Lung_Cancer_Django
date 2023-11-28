@@ -1,5 +1,5 @@
 import numpy as np
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.core.files.storage import default_storage
 from django.core.files.base import ContentFile
 import keras.models
@@ -10,6 +10,7 @@ from .forms import ImageUploadForm, SymptomForm
 import imghdr
 import joblib
 import pandas as pd
+import requests
 
 
 ct_scan_model = keras.models.load_model("mobnet_n_v_c.h5")
@@ -22,8 +23,10 @@ def predict_lung_cancer_sym(request):
         form = SymptomForm(request.POST)
         if form.is_valid():
             # Get user input
+            FIRST_NAME = form.cleaned_data['FIRST_NAME']
+            LAST_NAME = form.cleaned_data['LAST_NAME']
+            EMAIL_ID = form.cleaned_data['EMAIL_ID']
             GENDER = form.cleaned_data['GENDER']
-            # Get other symptom input fields from the form
             AGE = form.cleaned_data['AGE']
             SMOKING = form.cleaned_data['SMOKING']
             YELLOW_FINGERS = form.cleaned_data['YELLOW_FINGERS']
@@ -51,7 +54,7 @@ def predict_lung_cancer_sym(request):
                 'GENDER': [gender_encoded],
                 'AGE': [AGE],
                 'SMOKING': [SMOKING],
-                'YELLOW_FINGERS':[YELLOW_FINGERS],
+                'YELLOW_FINGERS': [YELLOW_FINGERS],
                 'ANXIETY': [ANXIETY],
                 'PEER_PRESSURE': [PEER_PRESSURE],
                 'CHRONIC DISEASE': [CHRONIC_DISEASE],
@@ -70,11 +73,53 @@ def predict_lung_cancer_sym(request):
 
             # Make predictions with the loaded model
             class_probabilities = symptoms_model.predict(input_data)
+            ml_result = True
             # Format the result message
             if class_probabilities[0] == 0:
                 result_message = "No Lung Cancer"
+                ml_result = False
             else:
                 result_message = "Lung Cancer Detected"
+
+            boolean_fields = ['SMOKING', 'YELLOW_FINGERS', 'ANXIETY', 'PEER_PRESSURE', 'CHRONIC_DISEASE',
+                              'FATIGUE', 'ALLERGY', 'WHEEZING', 'ALCOHOL_CONSUMING', 'COUGHING',
+                              'SHORTNESS_OF_BREATH', 'SWALLOWING_DIFFICULTY', 'CHEST_PAIN']
+            for field in boolean_fields:
+                form.cleaned_data[field] = True if form.cleaned_data[field] == 2 else False
+
+            api_url = 'http://user-management.us-east-2.elasticbeanstalk.com/patientInfo/createPatientRecord'
+            api_data = {
+                "firstName": form.cleaned_data["FIRST_NAME"],
+                "lastName": form.cleaned_data["LAST_NAME"],
+                "emailId": form.cleaned_data["EMAIL_ID"],
+                "gender": form.cleaned_data["GENDER"],
+                "age": form.cleaned_data["AGE"],
+                "smoking": form.cleaned_data['SMOKING'],
+                "yellowFinger": form.cleaned_data['YELLOW_FINGERS'],
+                "anxiety": form.cleaned_data['ANXIETY'],
+                "peerPressure": form.cleaned_data['PEER_PRESSURE'],
+                "chronicDisease": form.cleaned_data['CHRONIC_DISEASE'],
+                "fatigue": form.cleaned_data['FATIGUE'],
+                "allergy": form.cleaned_data['ALLERGY'],
+                "wheezing": form.cleaned_data['WHEEZING'],
+                "alcohol": form.cleaned_data['ALCOHOL_CONSUMING'],
+                "coughing": form.cleaned_data['COUGHING'],
+                "shortnessOfBreath": form.cleaned_data['SHORTNESS_OF_BREATH'],
+                "swallowingDifficulty": form.cleaned_data['SWALLOWING_DIFFICULTY'],
+                "chestPain": form.cleaned_data['CHEST_PAIN'],
+                "lungCancer": ml_result,
+            }
+            print("API Data:", api_data)
+            response = requests.post(api_url, json=api_data)
+            print("API Response Status:", response.status_code)
+            print("API Response Content:", response.content)
+
+            # Check the API response status if needed
+            if response.status_code == 200:
+                print("API Request Successful")  # Redirect to a success page
+            else:
+                # Handle API error
+                print("API Request Error")
 
             # Render a template with the results
             return render(request, 'sym_result_template.html', {

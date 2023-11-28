@@ -14,3 +14,5 @@ keras~=2.14.0
 joblib~=1.3.2
 scikit-learn~=1.3.2
 pandas~=2.1.2
+requests~=2.31.0
+djangorestframework~=3.14.0

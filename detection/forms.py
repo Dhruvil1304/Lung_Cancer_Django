@@ -11,7 +11,11 @@ class SymptomForm(forms.Form):
         ('F', 'Female'),
     )
 
-    GENDER = forms.ChoiceField(choices=GENDER_CHOICES, label='Gender', widget=forms.Select(attrs={'class': 'form-control'}))
+    FIRST_NAME = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control'}))
+    LAST_NAME = forms.CharField(widget=forms.TextInput(attrs={'class': 'form-control'}))
+    EMAIL_ID = forms.EmailField(widget=forms.EmailInput(attrs={'class': 'form-control'}))
+    GENDER = forms.ChoiceField(choices=GENDER_CHOICES, label='Gender', widget=forms.Select(attrs={'class': 'form'
+                                                                                                           '-control'}))
     AGE = forms.IntegerField(widget=forms.NumberInput(attrs={'class': 'form-control'}))
     SMOKING = forms.IntegerField(widget=forms.NumberInput(attrs={'class': 'form-control'}))
     YELLOW_FINGERS = forms.IntegerField(widget=forms.NumberInput(attrs={'class': 'form-control'}))
