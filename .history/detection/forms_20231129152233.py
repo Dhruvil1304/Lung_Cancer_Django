@@ -12,8 +12,8 @@ class SymptomForm(forms.Form):
     )
 
     YES_NO_CHOICES = (
-        (1, "No"),
-        (2, "Yes"),
+        (1, "Yes"),
+        (2, "No"),
     )
 
     FIRST_NAME = forms.CharField(
