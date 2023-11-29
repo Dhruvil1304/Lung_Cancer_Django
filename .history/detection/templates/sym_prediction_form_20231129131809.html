@@ -1,0 +1,39 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Symptoms Entry Form</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'assets/css/symptoms_form.css' %}">
+</head>
+<body>
+    <div class="container">
+        <div class="form-container">
+            <form method="post" action="{% url 'predict_syms' %}">
+                {% csrf_token %}
+                {{ form.as_ul }}
+                <input type="submit" value="Predict">
+                <a href="{% url 'home' %}" class="home-button">Home</a>
+            </form>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="form-container">
+            <form method="post" action="{% url 'predict_syms' %}">
+                {% csrf_token %}
+                <table class="form-table">
+                    {% for field in form %}
+                        <tr>
+                            <td>{{ field.label_tag }}</td>
+                            <td>{{ field }}</td>
+                        </tr>
+                    {% endfor %}
+                </table>
+                <input type="submit" value="Predict">
+                <a href="{% url 'home' %}" class="home-button">Home</a>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

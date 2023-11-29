@@ -1,0 +1,28 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Symptoms Results</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'assets/css/symptoms_result.css' %}">
+
+</head>
+<body>
+    <div class="container">
+        <div class="result-container">
+            <!-- <h1>{{ result_message }}</h1> -->
+            {% if class_probability == 1 %}
+            <h1>{{ result_message }}</h1>
+                <!-- Display precautions and YouTube video for lung cancer -->
+                <div class="precautions">
+                    <h2>The patient is much likely to have some form of lung cancer. It is advised to undero CT Imaging and analyze the scan for furtherdiagnosis. Once ready, you can upload the CT scan iin our software.</h2>
+            {% endif %}
+            <!-- Buttons for uploading CT scans and navigating to the landing page -->
+            <div class="buttons">
+                <a href="{% url 'home_async' %}" class="upload-button">Upload CT Scans</a>
+                <a href="{% url 'home' %}" class="home-button">Home Page</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -32,14 +32,6 @@ h1 {
     border-radius: 8px;
 }
 
-.positive{
-    background-color: rgba(255, 0, 0, 0.405);
-}
-
-.negative{
-    background-color: rgba(0, 128, 0, 0.483);
-}
-
 .precautions {
     margin-top: 20px;
 }

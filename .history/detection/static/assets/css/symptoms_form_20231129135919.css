@@ -13,16 +13,17 @@ body {
     text-align: center;
     padding: 20px;
     background-color: #fff; /* Or any color you prefer */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1); /* Optional for a subtle shadow */
     width: 100%;
     position: fixed; /* Fix it to the top */
     top: 0;
     left: 0;
-    /* z-index: 1000; Ensure it stays above other content */
+    z-index: 1000; /* Ensure it stays above other content */
 }
 
 /* Style form headings */
 h1 {
-    margin-top: 60px;
+    margin-top: 100px;
     text-align: center;
     color: #1977CC;
     font-size: 36px;
@@ -34,14 +35,6 @@ h2 {
     margin-bottom: 30px;
 }
 
-.small-hr {
-    width: 3%; /* Adjust the width as needed */
-    border: 0;
-    border-top: 2px solid #1972CC; /* Adjust the color and thickness as needed */
-    margin: 0 auto; /* This centers the hr */
-    display: block; /* Ensures it's on its own line */
-}
-
 .container {
     background-color: #f5f5f5;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -49,7 +42,6 @@ h2 {
     overflow: hidden;
     padding: 20px;
     margin: 20px; /* Adds space between the container and the screen border */
-    margin-top: 200px;
     width: auto; /* Adjusts width to content */
     max-width: 700px; /* Limits the maximum width of the container */
 }

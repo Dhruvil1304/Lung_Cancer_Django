@@ -1,0 +1,48 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Symptoms Results</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'assets/css/symptoms_result.css' %}">
+
+</head>
+<body>
+    <div class="container">
+        <div class="result-container">
+            <h1>{{ result_message }}</h1>
+            {% if class_probability == 1 %}
+                <!-- Display precautions and YouTube video for lung cancer -->
+                <div class="precautions">
+                    <h2>Lung Cancer Precautions</h2>
+                    <!-- <p>
+Here are some facts about lung cancer:
+Lung cancer is the leading cause of cancer deaths in the U.S.
+Survival rates are low, but they are improving
+The average five-year survival rate for all lung cancer patients is 18.6 percent
+Patients diagnosed with lung cancer at an early stage via CT screening have a 20-year survival rate of 80 percent
+Lung cancer life expectancy can vary by the type of lung cancer and other factors
+In general, life expectancy for lung cancer patients ranges from 7-16 months
+Lung cancer is usually considered curable if caught in the early stages
+It's usually not curable if it spreads to distant tissues
+People who have never smoked account for 20% of lung cancer diagnoses every year
+An estimated 47,660 non-smokers will be diagnosed with lung cancer in 2023
+Other facts about lung cancer include:
+Racial disparities exist in lung cancer
+Lung cancer screening and research has the potential to save thousands of lives
+With advances in treatment, more people are living longer and living well with lung cancer
+                    </p>
+                </div>
+                <div class="youtube-video">
+                    <iframe width="560" height="315" src="https://www.youtube.com/embed/vkxDGK9gF9s" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                </div> -->
+            {% endif %}
+            <!-- Buttons for uploading CT scans and navigating to the landing page -->
+            <div class="buttons">
+                <!-- <a href="{% url 'home_async' %}" class="upload-button">Upload CT Scans</a> -->
+                <a href="{% url 'home' %}" class="home-button">Home Page</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

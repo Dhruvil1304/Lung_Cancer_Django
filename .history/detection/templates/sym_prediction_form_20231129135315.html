@@ -5,6 +5,9 @@
     <meta charset="UTF-8">
     <title>Symptoms Entry Form</title>
     <link rel="stylesheet" type="text/css" href="{% static 'assets/css/symptoms_form.css' %}">
+    <h1>DETECT WITH CTSCAN</h1>
+      <h2>Upload the Patient's CT Scans here</h2>
+      <hr class="small-hr">
 </head>
 <body>
     <!-- <div class="container">
@@ -17,12 +20,7 @@
             </form>
         </div>
     </div> -->
-    <div class="header-container">
-        <h1>DETECT WITH CTSCAN</h1>
-        <h2>Upload the Patient's CT Scans here</h2>
-        <hr class="small-hr">
-    </div>
-    
+        
     <div class="container">
         <div class="form-container">
             <form method="post" action="{% url 'predict_syms' %}">
