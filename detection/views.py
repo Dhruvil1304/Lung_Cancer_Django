@@ -43,7 +43,7 @@ def predict_lung_cancer_sym(request):
             CHEST_PAIN = form.cleaned_data['CHEST_PAIN']
 
             # Encode gender (as you did in your code)
-            if GENDER == 'Male':
+            if GENDER == 'M':
                 gender_encoded = 0
             else:
                 gender_encoded = 1
@@ -84,6 +84,12 @@ def predict_lung_cancer_sym(request):
             boolean_fields = ['SMOKING', 'YELLOW_FINGERS', 'ANXIETY', 'PEER_PRESSURE', 'CHRONIC_DISEASE',
                               'FATIGUE', 'ALLERGY', 'WHEEZING', 'ALCOHOL_CONSUMING', 'COUGHING',
                               'SHORTNESS_OF_BREATH', 'SWALLOWING_DIFFICULTY', 'CHEST_PAIN']
+
+            if GENDER == 'M':
+                Gender = 'Male'
+            else:
+                Gender = 'Female'
+
             for field in boolean_fields:
                 form.cleaned_data[field] = True if form.cleaned_data[field] == 2 else False
 
@@ -92,7 +98,7 @@ def predict_lung_cancer_sym(request):
                 "firstName": form.cleaned_data["FIRST_NAME"],
                 "lastName": form.cleaned_data["LAST_NAME"],
                 "emailId": form.cleaned_data["EMAIL_ID"],
-                "gender": form.cleaned_data["GENDER"],
+                "gender": Gender,
                 "age": form.cleaned_data["AGE"],
                 "smoking": form.cleaned_data['SMOKING'],
                 "yellowFinger": form.cleaned_data['YELLOW_FINGERS'],
