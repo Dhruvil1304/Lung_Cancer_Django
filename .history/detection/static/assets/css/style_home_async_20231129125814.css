@@ -1,0 +1,219 @@
+body {
+    font-family: "Raleway", sans-serif;
+}
+
+/* Style for the content container */
+.content-container {
+    display: flex;
+    justify-content: space-around; /* Adjusts space between children */
+    align-items: center; /* Aligns children at their center */
+    margin-top: 20px;
+    margin-left: 100px;
+    margin-left: auto;
+}
+
+.content-container .icon i {
+    color: #1977CC;
+    height: 500px;
+    width: 500px;
+    margin: auto;
+}
+
+.large-icon {
+    font-size: 7em;
+    padding-top: 100px;
+}
+/* Style for the upload section */
+.leftside {
+    /* flex-basis: 48%; 
+    max-width: 48%;  */
+    height: 400px;
+    width: 400px;
+}
+
+/* Style for the results section */
+.rightside {
+    /* flex-basis: 48%; 
+    max-width: 48%;  */
+    height: 400px;
+    width: 400px;
+    /* margin-right: 200px; */
+    
+}
+
+
+/* Style form container */
+form {
+    height: 400px;
+    width: 400px;
+    margin: 50px 0 0; /* 50 200 0*/
+    padding: 30px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f5f5f5;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Style form headings */
+h1 {
+    margin-top: 100px;
+    text-align: center;
+    color: #1977CC;
+    font-size: 36px;
+}
+
+h2 {
+    text-align: center;    
+    font-size: 20px;
+    margin-bottom: 30px;
+}
+
+.small-hr {
+    width: 10%; /* Adjust the width as needed */
+    border: 0;
+    border-top: 2px solid #1972CC; /* Adjust the color and thickness as needed */
+    margin: 0 auto; /* This centers the hr */
+    display: block; /* Ensures it's on its own line */
+}
+
+
+/* Style form labels */
+label {
+    font-size: 20px;
+    text-align: center;
+    display: block;
+    margin: 15px 0 8px;
+    font-weight: bold;
+    color: #333;
+}
+
+/* Style form input fields */
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    width: 100%;
+    padding: 12px;
+    margin: 8px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+/* Style form submit button */
+button[type="submit"] {
+    background-color: #1977CC;
+    color: #fff;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+/* Hover effect on the submit button */
+button[type="submit"]:hover {
+    background-color: #114e83;
+}
+
+/* Style error message */
+p.error {
+    color: #dc3545;
+    margin-top: 10px;
+}
+
+/* Style result section */
+h2 .results {
+    margin-top: 20px;
+    color: #333;
+    font-size: 20px;
+}
+
+/* Style social links */
+.social-links {
+    margin-top: 20px;
+}
+
+.social-links a {
+    margin: 0 10px;
+    font-size: 24px;
+    color: #007BFF;
+}
+
+.social-links a:hover {
+    color: #0056b3;
+}
+
+/* Add these styles to your existing CSS file or create a new one */
+
+/* Style for the detect button */
+.detect-button {
+    background-color: #1977CC;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+/* Style for error message */
+p.error {
+    color: #dc3545;
+    margin-top: 10px;
+}
+
+/* Style for the results container */
+.results-container {
+    height: 630px;
+    width: 400px;
+    margin-top: 50px;
+    margin-right: 200px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    background-color: #f5f5f5;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Style for result text */
+.result-text {
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+/* Style for result image */
+.result-image {
+    max-width: 100%;
+    height: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+/* Style for the container */
+.container {
+    max-width: 600px; /* Adjust the width as needed */
+    margin: 0 auto;
+}
+
+/* Add these styles to your existing CSS file or create a new one */
+
+/* Style for the landing button */
+.landing-button {
+    display: block;
+    text-align: center;
+    text-decoration: none;
+    background-color: #1977CC;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 3px;
+    margin-top: 20px; /* Adjust the margin as needed */
+}
+
+/* Hover effect on the landing button */
+.landing-button:hover {
+    background-color: #114e83;
+}

@@ -1,0 +1,84 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>CT Scan Prediction</title>
+    <meta content="" name="description">
+    <meta content="" name="keywords">
+
+  <!-- Favicons -->
+    <link href="{% static 'assets/img/favicon.png' %}" rel="icon">
+    <link href="{% static 'assets/img/apple-touch-icon.png' %}" rel="apple-touch-icon">
+
+  <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Raleway:300,300i,400,400i,600,600i,700,700i" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{% static 'assets/css/style_home_async.css' %}">
+
+
+  <!-- =======================================================
+  * Template Name: Maundy
+  * Updated: Sep 18 2023 with Bootstrap v5.3.2
+  * Template URL: https://bootstrapmade.com/maundy-free-coming-soon-bootstrap-theme/
+  * Author: BootstrapMade.com
+  * License: https://bootstrapmade.com/license/
+  ======================================================== -->
+</head>
+
+<body>
+
+  <!-- ======= Header ======= -->
+  <div class="container">
+      <h2>DETECT WITH CTSCAN</h2>
+    <h2>Upload the Patient's CT Scans here</h2>
+  </div>
+
+    <div class="content-container">
+      <div class="leftside">
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="detect-button">Detect</button>
+            {% if image_path %}
+              <img src="{{ MEDIA_URL }}{{ image_path }}" alt="Uploaded Image" class="result-image">
+            {% endif %}
+        </form>
+      </div>
+      {% if error %}
+          <p class="error">{{ error }}</p>
+      {% endif %}
+
+      <div class="icon"><i class="bi bi-arrow-right-circle"></i></div>
+
+      <div class="rightside">
+        {% if result %}
+            <div class="results-container">
+                <h2>Results:</h2>
+                {% if result.is_ct_scan == "ctscan" %}
+                    <p class="result-text">Image is a CT scan.</p>
+                    <p>Predicted class: {{ result.ct_scan_pred }}</p>
+                {% else %}
+                    <p class="result-text">Image is not a CT scan. : {{ result.is_ct_scan }}</p>
+                {% endif %}
+                {% if result.cancer_pred %}
+                    <p>Predicted cancer type: {{ result.cancer_pred }}</p>
+                {% endif %}
+                {% if image_path %}
+                    <img src="{{ MEDIA_URL }}{{ image_path }}" alt="Uploaded Image" class="result-image"><br>
+                {% endif %}
+            </div>
+        {% endif %}
+      </div>
+    </div>
+
+    <!-- <a href="/" class="landing-button">Home</a> -->
+
+  
+
+
+
+</body>
+
+</html>
